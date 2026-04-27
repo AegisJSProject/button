@@ -1,23 +1,17 @@
 import terser from '@rollup/plugin-terser';
 
+const external = ['@aegisjsproject/styles/reset.js', '@aegisjsproject/styles/layers.js', '@aegisjsproject/styles/custom-button.js'];
+
 export default [{
-	input: 'index.js',
+	input: 'button.js',
+	external,
 	output: [{
-		file: 'index.cjs',
+		file: 'button.cjs',
 		format: 'cjs',
 	}, {
-		file: 'index.min.js',
-		format: 'iife',
+		file: 'button.min.js',
+		format: 'module',
 		plugins: [terser()],
 		sourcemap: true,
-	}, {
-		file: 'index.mjs',
-		format: 'module',
 	}],
-}, {
-	input: 'consts.js',
-	output: {
-		file: 'consts.cjs',
-		format: 'cjs',
-	}
 }];
