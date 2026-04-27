@@ -1,6 +1,6 @@
 {
   "name": "@aegisjsproject/button",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A simple base custom `<button>` element",
   "keywords": [],
   "type": "module",
