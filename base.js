@@ -2,7 +2,15 @@ import { reset } from '@aegisjsproject/styles/reset.js';
 import { layers } from '@aegisjsproject/styles/layers.js';
 import { customButton } from '@aegisjsproject/styles/custom-button.js';
 
-const styles = [layers, reset, customButton];
+const sheet = new CSSStyleSheet();
+
+sheet.replace(`@layer components {
+	:host([hidden]) {
+		display: none;
+	}
+}`);
+
+const styles = [layers, reset, customButton, sheet];
 
 export class CustomButton extends HTMLElement {
 	#shadow = this.attachShadow({ mode: 'open' });
@@ -76,6 +84,10 @@ export class CustomButton extends HTMLElement {
 
 	set disabled(val) {
 		this.toggleAttribute('disabled', val);
+	}
+
+	get signal() {
+		return this.#controller.signal;
 	}
 
 	static get observedAttributes() {
